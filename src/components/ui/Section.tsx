@@ -9,7 +9,7 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
 
 const variantStyles = {
   default: "bg-[#F8FAFC]",
-  primary: "bg-[#2F3E4E] text-white",
+  primary: "bg-[#2F3E4E]",
   secondary: "bg-[#5B6B7A]/10",
   white: "bg-white",
 };
@@ -37,19 +37,26 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
       <section
         ref={ref}
         className={`
+          relative
           ${variantStyles[variant]}
           ${sizeStyles[size]}
-          ${pattern ? "pattern-grid" : ""}
           ${className}
         `}
         {...props}
       >
+        {/* Subtle pattern overlay for primary sections - very low opacity */}
+        {pattern && variant === "primary" && (
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: `radial-gradient(circle, #9AA7B2 1px, transparent 1px)`,
+            backgroundSize: '24px 24px'
+          }} />
+        )}
         {container ? (
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
             {children}
           </div>
         ) : (
-          children
+          <div className="relative z-10">{children}</div>
         )}
       </section>
     );

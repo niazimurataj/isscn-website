@@ -8,6 +8,7 @@ import {
   SectionDescription,
   Card,
   Button,
+  ProfileCard,
 } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -18,10 +19,11 @@ export const metadata: Metadata = {
 
 const boardMembers = [
   {
-    name: "Yazi Murata",
+    name: "Niazi Murataj",
     role: "Founder & President",
     background: ["Ex-McKinsey Consultant", "Microsoft AI & Cloud Strategist"],
-    bio: "Yazi brings extensive experience in deploying production systems to achieve compliance outcomes. His family business was directly impacted by supply chain contamination, giving him first-hand understanding of the challenges facing exporters.",
+    bio: "Yazi brings extensive experience in deploying production systems to achieve compliance outcomes. His family business was directly impacted by supply chain contamination.",
+    avatarUrl: "/profile-pictures/niazi-murataj.jpg",
     valueToMission: [
       "Strategic consulting and technology deployment expertise",
       "First-hand experience with supply chain contamination impacts",
@@ -36,6 +38,7 @@ const boardMembers = [
       "Supply Chain Compliance Expert",
     ],
     bio: "Trifon developed effective supply-chain monitoring, compliance, and traceability practices through years of hands-on experience operating a business with robust security protocols.",
+    avatarUrl: "/profile-pictures/trifon-murataj.jpg",
     valueToMission: [
       "Operational credibility for Latin America exporter/importer workflows",
       "Practical compliance and monitoring expertise",
@@ -46,7 +49,8 @@ const boardMembers = [
     name: "Akshay Hanumegowda",
     role: "Chief Engineer",
     background: ["Electrical Engineer", "Former NSF Innovation Corps (I-Corps)"],
-    bio: "Akshay specializes in productionalizing research technology for industry use. His expertise spans hardware, firmware, and communications systems for traceability and observability.",
+    bio: "Akshay specializes in productionalizing research technology for industry use. His expertise spans hardware, firmware, and communications systems for traceability.",
+    avatarUrl: "/profile-pictures/akshay-hanumegowda.jpg",
     valueToMission: [
       "Hardware/firmware development for container security",
       "Sensor fusion and embedded ML systems",
@@ -57,20 +61,22 @@ const boardMembers = [
 
 const advisors = [
   {
-    name: "Tom Holt",
+    name: "T3 Holt",
     title: "Port Operations Advisor",
     background: "Port of Philadelphia",
     relevance:
       "Brings port operations expertise and contextual experience with major container security incidents.",
     status: "Prospective",
+    avatarUrl: "/profile-pictures/t3-holt.jpg",
   },
   {
     name: "José Antonio Hidalgo",
     title: "Industry Relations Advisor",
-    background: "Ecuadorian Banana Exporters Association",
+    background: "Ecuadorian Banana Exporters Association (AEBE)",
     relevance:
-      "Provides industry compliance expertise and exporter network access for the Ecuador banana sector.",
+      "Executive Director of AEBE and Co-President of the World Banana Forum. Provides industry compliance expertise and exporter network access for the Ecuador banana sector.",
     status: "Prospective",
+    avatarUrl: "/profile-pictures/jose-antonio-hidalgo.jpg",
   },
   {
     name: "Ed Moriarty",
@@ -79,6 +85,7 @@ const advisors = [
     relevance:
       "Offers regulatory and enforcement lens with credibility for counter-narcotics and trade compliance.",
     status: "Prospective",
+    avatarUrl: "/profile-pictures/ed-moriarty.jpg",
   },
 ];
 
@@ -95,10 +102,10 @@ export default function TeamPage() {
       {/* Hero */}
       <Section variant="primary" size="lg" pattern>
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-sm mb-6">
             Our Team
           </h1>
-          <p className="text-xl text-[#9AA7B2] leading-relaxed">
+          <p className="text-xl text-white/80 leading-relaxed">
             Meet the dedicated professionals working to secure global supply
             chains and combat narcotics trafficking.
           </p>
@@ -115,69 +122,50 @@ export default function TeamPage() {
           </SectionDescription>
         </SectionHeader>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
           {boardMembers.map((member) => (
-            <Card key={member.name} padding="lg" className="h-full">
-              {/* Avatar placeholder */}
-              <div className="w-24 h-24 rounded-full bg-[#2F3E4E]/10 flex items-center justify-center mb-6 mx-auto">
-                <span className="text-3xl font-bold text-[#5B6B7A]">
-                  {member.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </span>
-              </div>
+            <ProfileCard
+              key={member.name}
+              name={member.name}
+              title={member.role}
+              avatarUrl={member.avatarUrl}
+              background={member.background}
+              bio={member.bio}
+              enableTilt={true}
+            />
+          ))}
+        </div>
 
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold text-[#2F3E4E]">
-                  {member.name}
-                </h3>
-                <p className="text-[#4F6F73] font-medium">{member.role}</p>
-              </div>
-
-              <div className="flex flex-wrap justify-center gap-2 mb-4">
-                {member.background.map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1 bg-[#9AA7B2]/20 text-[#5B6B7A] text-xs rounded-full"
+        {/* Value to Mission Details */}
+        <div className="mt-16 grid md:grid-cols-3 gap-8">
+          {boardMembers.map((member) => (
+            <Card key={`${member.name}-details`} padding="md" className="h-full">
+              <h4 className="text-lg font-semibold text-[#2F3E4E] mb-3">
+                {member.name.split(" ")[0]}&apos;s Contributions
+              </h4>
+              <ul className="space-y-2">
+                {member.valueToMission.map((value, index) => (
+                  <li
+                    key={index}
+                    className="text-sm text-[#5B6B7A] flex items-start gap-2"
                   >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <p className="text-[#5B6B7A] text-sm mb-4 text-center">
-                {member.bio}
-              </p>
-
-              <div className="border-t border-[#9AA7B2]/20 pt-4">
-                <p className="text-xs font-medium text-[#2F3E4E] mb-2">
-                  Value to Mission:
-                </p>
-                <ul className="space-y-1">
-                  {member.valueToMission.map((value, index) => (
-                    <li
-                      key={index}
-                      className="text-xs text-[#5B6B7A] flex items-start gap-2"
+                    <svg
+                      className="w-4 h-4 text-[#4F6F73] mt-0.5 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <svg
-                        className="w-3 h-3 text-[#5B6B7A] mt-0.5 flex-shrink-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {value}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    {value}
+                  </li>
+                ))}
+              </ul>
             </Card>
           ))}
         </div>
@@ -194,37 +182,23 @@ export default function TeamPage() {
           </SectionDescription>
         </SectionHeader>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8 justify-items-center">
           {advisors.map((advisor) => (
-            <Card key={advisor.name} padding="md">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#2F3E4E]/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-lg font-semibold text-[#5B6B7A]">
-                    {advisor.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-semibold text-[#2F3E4E]">
-                      {advisor.name}
-                    </h3>
-                    {advisor.status === "Prospective" && (
-                      <span className="px-2 py-0.5 bg-[#4F6F73]/20 text-[#4F6F73] text-xs rounded-full">
-                        Prospective
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-[#4F6F73] mb-1">{advisor.title}</p>
-                  <p className="text-xs text-[#9AA7B2] mb-2">
-                    {advisor.background}
-                  </p>
-                  <p className="text-sm text-[#5B6B7A]">{advisor.relevance}</p>
-                </div>
-              </div>
-            </Card>
+            <div key={advisor.name} className="flex flex-col items-center">
+              <ProfileCard
+                name={advisor.name}
+                title={advisor.title}
+                avatarUrl={advisor.avatarUrl}
+                background={[advisor.background]}
+                bio={advisor.relevance}
+                enableTilt={true}
+              />
+              {advisor.status === "Prospective" && (
+                <span className="mt-3 px-3 py-1 bg-[#4F6F73]/20 text-[#4F6F73] text-sm rounded-full font-medium">
+                  Prospective Advisor
+                </span>
+              )}
+            </div>
           ))}
         </div>
       </Section>
@@ -245,7 +219,7 @@ export default function TeamPage() {
               {seekingProfiles.map((profile, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <svg
-                    className="w-5 h-5 text-[#5B6B7A] mt-0.5 flex-shrink-0"
+                    className="w-5 h-5 text-[#4F6F73] mt-0.5 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

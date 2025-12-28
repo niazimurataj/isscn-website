@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { getReports } from "@/lib/content";
 import {
   Section,
@@ -11,6 +10,7 @@ import {
   Badge,
   Button,
 } from "@/components/ui";
+import { FeaturedReportCard } from "@/components/sections/FeaturedReportCard";
 
 export const metadata: Metadata = {
   title: "Reports & Publications",
@@ -34,10 +34,10 @@ export default function ReportsPage() {
       {/* Hero */}
       <Section variant="primary" size="lg" pattern>
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-sm mb-6">
             Reports & Publications
           </h1>
-          <p className="text-xl text-[#9AA7B2] leading-relaxed">
+          <p className="text-xl text-white/80 leading-relaxed">
             Research, analysis, and insights on supply chain security,
             technology, and industry best practices.
           </p>
@@ -105,38 +105,9 @@ export default function ReportsPage() {
               </div>
             </div>
 
-            {/* Visual */}
+            {/* Visual - Interactive Report Card with Folder */}
             <div className="relative">
-              <div className="aspect-[4/5] bg-[#2F3E4E] rounded-2xl p-8 flex flex-col justify-between shadow-2xl">
-                <div>
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-10 h-10 relative">
-                      <Image
-                        src="/SVG/Asset 4.svg"
-                        alt="ISST Seal"
-                        fill
-                        className="object-contain brightness-0 invert"
-                      />
-                    </div>
-                    <span className="text-white font-semibold">ISST</span>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    Annual Report
-                  </h3>
-                  <p className="text-[#9AA7B2]">
-                    The State of Supply Chain Security in Latin American Exports
-                  </p>
-                </div>
-
-                <div className="flex items-end justify-between">
-                  <span className="text-5xl font-bold text-[#9AA7B2]">2025</span>
-                  <div className="text-right">
-                    <div className="text-[#5B6B7A] text-sm">Published</div>
-                    <div className="text-white">{formatDate(featuredReport.date)}</div>
-                  </div>
-                </div>
-              </div>
+              <FeaturedReportCard date={featuredReport.date} />
             </div>
           </div>
         </Section>
@@ -223,15 +194,15 @@ export default function ReportsPage() {
       {/* CTA */}
       <Section variant="primary" size="md" pattern>
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-white drop-shadow-sm mb-4">
             Stay Informed
           </h2>
-          <p className="text-lg text-[#9AA7B2] mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             Subscribe to our newsletter to receive new reports and research
             directly in your inbox.
           </p>
           <Link href="/contact#newsletter">
-            <Button size="lg" className="bg-white text-[#2F3E4E] hover:bg-[#9AA7B2]">Subscribe to Updates</Button>
+            <Button size="lg" className="bg-[#4F6F73] text-white hover:bg-[#5d8285]">Subscribe to Updates</Button>
           </Link>
         </div>
       </Section>

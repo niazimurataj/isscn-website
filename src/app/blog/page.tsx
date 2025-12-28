@@ -31,10 +31,10 @@ export default function BlogPage() {
       {/* Hero */}
       <Section variant="primary" size="lg" pattern>
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-sm mb-6">
             Blog
           </h1>
-          <p className="text-xl text-[#9AA7B2] leading-relaxed">
+          <p className="text-xl text-white/80 leading-relaxed">
             News, insights, and updates on supply chain security,
             technology, and our programs.
           </p>
@@ -160,16 +160,16 @@ export default function BlogPage() {
       {/* Newsletter CTA */}
       <Section variant="primary" size="md" pattern>
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-white drop-shadow-sm mb-4">
             Stay Updated
           </h2>
-          <p className="text-lg text-[#9AA7B2] mb-6 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 mb-6 max-w-2xl mx-auto">
             Subscribe to our newsletter for the latest news, research, and
             insights on supply chain security.
           </p>
           <Link
             href="/contact#newsletter"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#2F3E4E] font-semibold rounded-lg hover:bg-[#9AA7B2] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#4F6F73] text-white font-semibold rounded-lg hover:bg-[#5d8285] transition-colors"
           >
             Subscribe to Newsletter
             <svg

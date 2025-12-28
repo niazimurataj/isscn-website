@@ -9,6 +9,7 @@ import {
   Button,
   Card,
 } from "@/components/ui";
+import { ValuesCardSwap } from "@/components/sections";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -55,105 +56,16 @@ const timeline = [
   },
 ];
 
-const values = [
-  {
-    title: "Mission-Driven",
-    description:
-      "Every decision we make is guided by our commitment to making borders and societies safer.",
-    icon: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Transparency",
-    description:
-      "We practice what we preach, maintaining open governance and clear conflicts-of-interest policies.",
-    icon: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-        />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Accessibility",
-    description:
-      "Security shouldn't be a privilege. We work to make protection accessible to businesses of all sizes.",
-    icon: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Collaboration",
-    description:
-      "Complex problems require diverse perspectives. We partner across sectors to drive real change.",
-    icon: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-        />
-      </svg>
-    ),
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
       <Section variant="primary" size="lg" pattern>
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-sm mb-6">
             About ISST
           </h1>
-          <p className="text-xl text-[#9AA7B2] leading-relaxed">
+          <p className="text-xl text-white/80 leading-relaxed">
             The Institute for Shipping Security and Technology is a
             nonprofit organization dedicated to making borders and societies
             safer by empowering businesses to strengthen their supply chain
@@ -382,28 +294,16 @@ export default function AboutPage() {
         </p>
       </Section>
 
-      {/* Values */}
+      {/* Values - Interactive CardSwap */}
       <Section variant="white" size="lg">
         <SectionHeader>
           <SectionTitle className="text-[#2F3E4E]">Our Values</SectionTitle>
           <SectionDescription>
-            The principles that guide everything we do.
+            The principles that guide everything we do. Hover to pause, watch them cycle through.
           </SectionDescription>
         </SectionHeader>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, index) => (
-            <div key={index} className="text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[#2F3E4E]/10 text-[#5B6B7A] mb-4">
-                {value.icon}
-              </div>
-              <h3 className="text-lg font-semibold text-[#2F3E4E] mb-2">
-                {value.title}
-              </h3>
-              <p className="text-[#5B6B7A] text-sm">{value.description}</p>
-            </div>
-          ))}
-        </div>
+        <ValuesCardSwap />
       </Section>
 
       {/* Timeline */}
@@ -445,22 +345,22 @@ export default function AboutPage() {
       {/* CTA */}
       <Section variant="primary" size="md" pattern>
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-sm mb-4">
             Join Our Mission
           </h2>
-          <p className="text-lg text-[#9AA7B2] mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             Whether you&apos;re an exporter, technology provider, or passionate
             advocate, there&apos;s a place for you in our work.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contact">
-              <Button size="lg" className="bg-white text-[#2F3E4E] hover:bg-[#9AA7B2]">Get Involved</Button>
+              <Button size="lg" className="bg-[#4F6F73] text-white hover:bg-[#5d8285]">Get Involved</Button>
             </Link>
             <Link href="/team">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-[#5B6B7A] text-white hover:bg-[#5B6B7A]"
+                className="border-2 border-white/70 text-white hover:bg-white hover:text-[#2F3E4E]"
               >
                 Meet Our Team
               </Button>

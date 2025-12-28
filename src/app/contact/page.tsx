@@ -73,10 +73,10 @@ export default function ContactPage() {
       {/* Hero */}
       <Section variant="primary" size="lg" pattern>
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-sm mb-6">
             Contact Us
           </h1>
-          <p className="text-xl text-[#9AA7B2] leading-relaxed">
+          <p className="text-xl text-white/80 leading-relaxed">
             Have questions about our programs? Interested in partnering with us?
             We&apos;d love to hear from you.
           </p>
@@ -380,18 +380,18 @@ export default function ContactPage() {
       {/* Newsletter Section */}
       <Section variant="primary" size="lg" pattern id="newsletter">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-sm mb-4">
             Subscribe to Our Newsletter
           </h2>
-          <p className="text-lg text-[#9AA7B2] mb-8">
+          <p className="text-lg text-white/80 mb-8">
             Stay informed on supply chain security news, research updates, and
             program announcements. We send updates monthly and respect your
             inbox.
           </p>
 
           {newsletterStatus === "success" ? (
-            <div className="bg-[#4a6b5c]/20 border border-[#4a6b5c]/30 rounded-xl p-6 max-w-md mx-auto">
-              <div className="flex items-center justify-center gap-3 text-[#9AA7B2] mb-2">
+            <div className="bg-white/10 border border-white/20 rounded-xl p-6 max-w-md mx-auto">
+              <div className="flex items-center justify-center gap-3 text-white mb-2">
                 <svg
                   className="w-6 h-6"
                   fill="none"
@@ -407,7 +407,7 @@ export default function ContactPage() {
                 </svg>
                 <span className="text-lg font-medium text-white">You&apos;re subscribed!</span>
               </div>
-              <p className="text-[#9AA7B2]">
+              <p className="text-white/70">
                 Watch your inbox for our next newsletter.
               </p>
             </div>
@@ -420,14 +420,14 @@ export default function ContactPage() {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="w-full px-4 py-3 bg-[#5B6B7A]/30 border border-[#5B6B7A]/50 rounded-lg text-white placeholder:text-[#9AA7B2] focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white border border-white rounded-lg text-[#2F3E4E] placeholder:text-[#5B6B7A] focus:outline-none focus:ring-2 focus:ring-[#4F6F73] focus:border-transparent"
                   {...newsletterForm.register("email", { required: true })}
                 />
               </div>
               <Button
                 type="submit"
                 isLoading={newsletterStatus === "loading"}
-                className="whitespace-nowrap bg-white text-[#2F3E4E] hover:bg-[#9AA7B2]"
+                className="whitespace-nowrap bg-[#4F6F73] text-white hover:bg-[#5d8285]"
               >
                 Subscribe
                 <svg
@@ -447,7 +447,7 @@ export default function ContactPage() {
             </form>
           )}
 
-          <p className="text-[#5B6B7A] text-sm mt-4">
+          <p className="text-white/50 text-sm mt-4">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </div>

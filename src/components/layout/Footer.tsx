@@ -32,12 +32,12 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 relative">
+              <div className="w-12 h-12 relative bg-white rounded-full p-1">
                 <Image
                   src="/SVG/Asset 4.svg"
                   alt="ISST Seal"
                   fill
-                  className="object-contain brightness-0 invert"
+                  className="object-contain"
                 />
               </div>
               <span className="text-lg font-bold">ISST</span>

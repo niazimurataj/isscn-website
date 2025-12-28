@@ -149,10 +149,10 @@ export default function ProgramsPage() {
       {/* Hero */}
       <Section variant="primary" size="lg" pattern>
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-sm mb-6">
             Our Programs
           </h1>
-          <p className="text-xl text-[#9AA7B2] leading-relaxed">
+          <p className="text-xl text-white/80 leading-relaxed">
             Five integrated programs designed to strengthen supply chain
             security at every level, from education to implementation.
           </p>
@@ -219,11 +219,8 @@ export default function ProgramsPage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-[#2F3E4E]/60 flex items-center justify-center">
-                  <div className={`${program.color} p-6 rounded-2xl bg-white/90`}>
-                    <div className="w-16 h-16">{program.icon}</div>
-                  </div>
-                </div>
+                {/* Subtle gradient overlay for depth - no white box */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2F3E4E]/70 via-[#2F3E4E]/30 to-transparent" />
               </div>
             </div>
           ))}
@@ -308,15 +305,15 @@ export default function ProgramsPage() {
       {/* CTA */}
       <Section variant="primary" size="md" pattern>
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-sm mb-4">
             Ready to Strengthen Your Supply Chain?
           </h2>
-          <p className="text-lg text-[#9AA7B2] mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             Contact us to learn how our programs can help protect your business
             from supply chain contamination.
           </p>
           <Link href="/contact">
-            <Button size="lg" className="bg-white text-[#2F3E4E] hover:bg-[#9AA7B2]">Get Started Today</Button>
+            <Button size="lg" className="bg-[#4F6F73] text-white hover:bg-[#5d8285]">Get Started Today</Button>
           </Link>
         </div>
       </Section>
