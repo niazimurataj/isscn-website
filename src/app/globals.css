@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
+/* 
+  ISST Design System
+  Locked Color Palette:
+  - Primary (Seal Ring / Dominant): Slate Navy #2F3E4E
+  - Secondary (Icons / Inner Elements): Steel Gray #5B6B7A
+  - Tertiary (Highlights / Lighter Faces): Light Blue-Gray #9AA7B2
+  - Background / Negative Space: White #FFFFFF
+  - Optional Mobile Accent (≤5%): Muted Teal #4F6F73
+  
+  Rules: No gradients, no pure black, no additional colors, icons monochrome only
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Palette */
+  --color-primary-navy: #2F3E4E;
+  --color-secondary-gray: #5B6B7A;
+  --color-tertiary-light: #9AA7B2;
+  --color-background: #FFFFFF;
+  --color-accent-teal: #4F6F73;
+  
+  /* Semantic Colors */
+  --color-text-primary: #2F3E4E;
+  --color-text-secondary: #5B6B7A;
+  --color-text-muted: #9AA7B2;
+  --color-text-inverse: #FFFFFF;
+  
+  /* Surface Colors */
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F8FAFC;
+  --color-surface-dark: #2F3E4E;
+  
+  /* Border Colors */
+  --color-border: rgba(154, 167, 178, 0.3);
+  --color-border-strong: rgba(91, 107, 122, 0.5);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-text-primary);
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus States */
+*:focus-visible {
+  outline: 2px solid var(--color-secondary-gray);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary-navy);
+  color: var(--color-text-inverse);
+}
+
+/* Subtle Pattern Background */
+.pattern-grid {
+  background-image: 
+    linear-gradient(rgba(91, 107, 122, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 107, 122, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(47, 62, 78, 0.12);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Link Styles */
+a {
+  transition: color 0.15s ease;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-tertiary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary-gray);
+}
+
+/* Mobile Teal Accent - Used sparingly on mobile */
+@media (max-width: 768px) {
+  .mobile-accent {
+    color: var(--color-accent-teal);
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
