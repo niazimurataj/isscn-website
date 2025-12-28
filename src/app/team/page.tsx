@@ -10,6 +10,7 @@ import {
   Button,
   ProfileCard,
 } from "@/components/ui";
+import { Waves } from "@/components/reactbits";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -100,8 +101,18 @@ export default function TeamPage() {
   return (
     <>
       {/* Hero */}
-      <Section variant="primary" size="lg" pattern>
-        <div className="max-w-4xl">
+      <Section variant="primary" size="lg" className="relative overflow-hidden">
+        <Waves
+          lineColor="rgba(255, 255, 255, 0.15)"
+          backgroundColor="transparent"
+          waveSpeedX={0.015}
+          waveSpeedY={0.005}
+          waveAmpX={40}
+          waveAmpY={20}
+          xGap={12}
+          yGap={36}
+        />
+        <div className="max-w-4xl relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-sm mb-6">
             Our Team
           </h1>
